@@ -59,6 +59,15 @@ The project addresses the communication and robustness challenges of drones oper
   <em>Transponder wiring schematic (KiCad).</em>
 </p>
 
+### 3D-printed enclosures
+
+A custom enclosure was designed in CAD for each unit — transponder, interrogation station and GPS — and 3D-printed. Full dimensioned drawings (boxes and lids) are in [`hardware/enclosures/`](hardware/enclosures/).
+
+<p align="center">
+  <img src="docs/images/enclosures.png" width="900"><br>
+  <em>Dimensioned drawings of the three enclosures (transponder, station, GPS), each with an isometric view.</em>
+</p>
+
 ## Validation
 
 <p align="center">
@@ -85,6 +94,7 @@ interrogation_station/        ground-side firmware (ESP32)
   GET_CONFIG_STAZIONE.../      read EByte E220 configuration
   SET_CONFIG_STAZIONE.../      write EByte E220 configuration
 ground_visualizer/            Processing sketch — vector radar-style display
+hardware/enclosures/          dimensioned drawings of the 3D-printed enclosures (PDF)
 docs/images/                  hardware photos, schematic and screenshots
 ```
 
