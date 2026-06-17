@@ -68,6 +68,11 @@ A custom enclosure was designed in CAD for each unit — transponder, interrogat
   <em>Dimensioned drawings of the three enclosures (transponder, station, GPS), each with an isometric view.</em>
 </p>
 
+<p align="center">
+  <img src="docs/images/exploded.png" width="780"><br>
+  <em>Exploded and assembly views: each unit (interrogation station, transponder, GPS) and the assembled system.</em>
+</p>
+
 ## Validation
 
 <p align="center">
@@ -78,6 +83,11 @@ A custom enclosure was designed in CAD for each unit — transponder, interrogat
 <p align="center">
   <img src="docs/images/oscilloscope.png" width="520"><br>
   <em>Signal and power-consumption validation on the bench.</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/spectrum.png" width="460"><br>
+  <em>The 868 MHz LoRa transmission captured on a spectrum analyzer.</em>
 </p>
 
 Range and reliability of the 868 MHz link were validated through field testing in real conditions.
