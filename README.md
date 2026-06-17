@@ -2,6 +2,11 @@
 
 > 868 MHz LoRa transponder system for the monitoring and safety of civil drones — BSc thesis project (Computer Engineering, 2024).
 
+<p align="center">
+  <img src="docs/images/drone.jpg" width="540"><br>
+  <em>The transponder is designed to ride on civil UAVs and report their position on request.</em>
+</p>
+
 A lightweight, *secondary-radar*-style identification and position-reporting link for civil UAVs. A ground **interrogation station** broadcasts a position request over long-range 868 MHz LoRa; a drone-mounted **transponder** receives it, acquires its GNSS position and replies. A companion **Processing visualizer** plots the reported position on a radar-style display.
 
 The project addresses the communication and robustness challenges of drones operating in real environments, with field testing of range and reliability of the 868 MHz link.
@@ -20,18 +25,53 @@ The project addresses the communication and robustness challenges of drones oper
    serial --> Processing visualizer  -->  radar-style position display
 ```
 
-- The **interrogation station** (ESP32 + EByte E220) periodically broadcasts a fixed `POSITION` interrogation frame over LoRa using fixed addressing on channel 18.
+- The **interrogation station** (ESP32 + EByte E220) broadcasts a fixed `POSITION` interrogation frame over LoRa using fixed addressing on channel 18.
 - The **transponder** (Arduino Nano + EByte E220 + u-blox NEO-6 GPS) listens; on receiving the interrogation it reads a GPS fix and transmits its position back to the station.
-- The station prints the received position over the serial port, where the **Processing** sketch renders it on a vector, radar-style map.
+- The station prints the received position over serial, where the **Processing** sketch renders it on a vector, radar-style map.
+
+<p align="center">
+  <img src="docs/images/visualizer.png" width="640"><br>
+  <em>Ground-station view: the interrogated drone's position plotted on a map (field tests around Tortolì / Arbatax, Sardinia).</em>
+</p>
 
 ## Hardware
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/hardware.jpg"></td>
+    <td width="50%"><img src="docs/images/transponder.jpg"></td>
+  </tr>
+  <tr>
+    <td align="center"><em>The two units and the u-blox NEO-6 GPS.</em></td>
+    <td align="center"><em>The drone-side transponder in its 3D-printed enclosure.</em></td>
+  </tr>
+</table>
 
 | Node | MCU | Radio | Other |
 |------|-----|-------|-------|
 | Interrogation station | ESP32 dev board | EByte E220-900T22D (868 MHz LoRa) | — |
 | UAV transponder | Arduino Nano | EByte E220-900T22D (868 MHz LoRa) | u-blox NEO-6 GPS |
 
-Earlier prototypes in the thesis also used EByte E32 modules.
+3D-printed enclosures were designed for each unit (station, transponder, GPS); earlier prototypes also used EByte E32 modules. The wiring was designed in KiCad:
+
+<p align="center">
+  <img src="docs/images/schematic.png" width="660"><br>
+  <em>Transponder wiring schematic (KiCad).</em>
+</p>
+
+## Validation
+
+<p align="center">
+  <img src="docs/images/test-bench.jpg" width="600"><br>
+  <em>Bench setup: interrogation station, transponder and voltage/current instrumentation.</em>
+</p>
+
+<p align="center">
+  <img src="docs/images/oscilloscope.png" width="520"><br>
+  <em>Signal and power-consumption validation on the bench.</em>
+</p>
+
+Range and reliability of the 868 MHz link were validated through field testing in real conditions.
 
 ## Repository layout
 
@@ -45,6 +85,7 @@ interrogation_station/        ground-side firmware (ESP32)
   GET_CONFIG_STAZIONE.../      read EByte E220 configuration
   SET_CONFIG_STAZIONE.../      write EByte E220 configuration
 ground_visualizer/            Processing sketch — vector radar-style display
+docs/images/                  hardware photos, schematic and screenshots
 ```
 
 ## Build & flash
