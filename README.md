@@ -63,6 +63,11 @@ The radios and wiring were designed in **KiCad**, with pictorial wiring diagrams
   <em>Interrogation station — electrical schematic (ESP32 D1 mini + EByte E220, KiCad).</em>
 </p>
 
+<p align="center">
+  <img src="docs/images/schematic-transponder.png" width="600"><br>
+  <em>Transponder — electrical schematic (Arduino Nano + EByte E220 + NEO-6 GPS, level-shifted, KiCad).</em>
+</p>
+
 <table>
   <tr>
     <td width="50%"><img src="docs/images/wiring-station.png"></td>
