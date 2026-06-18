@@ -52,12 +52,32 @@ The project addresses the communication and robustness challenges of drones oper
 | Interrogation station | ESP32 dev board | EByte E220-900T22D (868 MHz LoRa) | — |
 | UAV transponder | Arduino Nano | EByte E220-900T22D (868 MHz LoRa) | u-blox NEO-6 GPS |
 
-3D-printed enclosures were designed for each unit (station, transponder, GPS); earlier prototypes also used EByte E32 modules. The wiring was designed in KiCad:
+Earlier prototypes also used EByte E32 modules.
+
+### Schematics & wiring
+
+The radios and wiring were designed in **KiCad**, with pictorial wiring diagrams drawn for assembly. Full schematics and wiring diagrams (PDF) are in [`hardware/schematics/`](hardware/schematics/).
 
 <p align="center">
-  <img src="docs/images/schematic.png" width="660"><br>
-  <em>Transponder wiring schematic (KiCad).</em>
+  <img src="docs/images/schematic-station.png" width="600"><br>
+  <em>Interrogation station — electrical schematic (ESP32 D1 mini + EByte E220, KiCad).</em>
 </p>
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/wiring-station.png"></td>
+    <td width="50%"><img src="docs/images/wiring-transponder.png"></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Station wiring — ESP32 ↔ EByte E220.</em></td>
+    <td align="center"><em>Transponder wiring — Arduino Nano ↔ E220 ↔ NEO-6 GPS (level-shifted).</em></td>
+  </tr>
+</table>
+
+| Unit | Schematic (KiCad) | Wiring diagram |
+|---|:---:|:---:|
+| **Interrogation station** | [PDF](hardware/schematics/interrogation-station-schematic.pdf) | [PDF](hardware/schematics/interrogation-station-wiring.pdf) |
+| **Transponder** | [PDF](hardware/schematics/transponder-schematic.pdf) | [PDF](hardware/schematics/transponder-wiring.pdf) |
 
 ### 3D-printed enclosures
 
@@ -105,7 +125,9 @@ interrogation_station/        ground-side firmware (ESP32)
   SET_CONFIG_STAZIONE.../      write EByte E220 configuration
 ground_visualizer/            Processing sketch — vector radar-style display
 hardware/enclosures/          dimensioned drawings of the 3D-printed enclosures (PDF)
-docs/images/                  hardware photos, schematic and screenshots
+hardware/schematics/          KiCad schematics + wiring diagrams, per unit (PDF)
+docs/images/                  hardware photos, schematics and screenshots
+docs/                         full thesis (PDF, Italian)
 ```
 
 ## Build & flash
@@ -119,6 +141,8 @@ docs/images/                  hardware photos, schematic and screenshots
 
 BSc thesis in **Computer Engineering (L-8), Universitas Mercatorum, 2024 — 90/110.**
 Title: *long-range 868 MHz LoRa transponder for the monitoring and safety of civil drones.*
+
+📄 **Read the full thesis** (77 pages, in Italian): [*Studio e sviluppo di un transponder LoRa 868 MHz per il monitoraggio e la sicurezza dei droni ad uso civile*](docs/thesis-LoRa-868MHz-drone-transponder-it.pdf)
 
 ## Author
 
